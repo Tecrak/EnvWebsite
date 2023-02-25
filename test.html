@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/test.css">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <section class="list-section">
+        <div class="filter_block">
+            <h3>Courses from <span>HOTBEANS</span> proffesionals</h3>
+            <div id="filters">
+                <button class="bttn active" onclick="filterSelection('all')">All</button>
+                <button class="bttn" onclick="filterSelection('Web_Design')">Web Design</button>
+                <button class="bttn" onclick="filterSelection('HTML/CSS')">HTML/CSS</button>
+                <button class="bttn" onclick="filterSelection('JScript')">JS</button>
+                <button class="bttn" onclick="filterSelection('PHP')">PHP</button>
+                <button class="bttn" onclick="filterSelection('C++')">C++</button>
+            </div>
+        </div>
+        <div class="courses_container">
+            <div class="course_list_block">
+                <a href="page/index.html" class="filterElement JScript">
+                    <img src="img/JS.jpg" type="img/jpg" alt="" class="course_img"></img>
+                    <p>-JS</p>
+                    <h3>Full course for JavaScript</h3>
+                </a>
+                <a href="#" class="filterElement Web_Design">
+                    <img src="img/wordpress.jpg" type="img/jpg" alt="" class="course_img"></img>
+                    <p>-Web Design</p>
+                    <h3>Word Press</h3>
+                </a>
+                <a href="#" class="filterElement HTML/CSS">
+                    <img src="img/webdevelop.jpg" type="img/jpg" alt="" class="course_img"></img>
+                    <p>-HTML/CSS</p>
+                    <h3>Web Development for beginner</h3>
+                </a>
+                    <a href="#" class="filterElement Web_Design HTML/CSS">
+                    <img src="img/webdesign.png" type="img/png" alt="" class="course_img"></img>
+                    <p>-Web design/HTML/CSS</p>
+                    <h3>Web Design for beginners</h3>
+                </a>
+                <a href="#" class="filterElement JScript PHP C++">
+                    <img src="img/scripting.jpg" type="img/jpg" alt="" class="course_img"></img>
+                    <p>-JS/PHP/C++</p>
+                    <h3>Scripting</h3>
+                </a>
+                <a href="#" class="filterElement PHP C++">
+                    <img src="img/database.jpg" type="img/jpg" alt="" class="course_img"></img>
+                    <p>-PHP/C++</p>
+                    <h3>Web DataBases for beginers</h3>
+                </a>
+                <a href="#" class="filterElement Web_Design HTML/CSS JScript PHP C++">
+                    <img src="img/allBeginers.png" type="img/png" alt="" class="course_img"></img>
+                    <p>-Web design/HTML/CSS/JS/C++</p>
+                  <h3>Full course for beginners</h3>
+                </a>
+                <a href="#" class="filterElement Web_Design HTML/CSS JScript PHP C++">
+                    <img src="img/allinclude.jpeg" type="img/jpeg" alt="" class="course_img"></img>
+                    <p>-Web design/HTML/CSS/JS/C++</p>
+                    <h3>Full course for advanced</h3>
+                </a>
+            </div>
+        </div>
+      </section>
+      <script>
+        filterSelection("all")
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filterElement");
+            if (c == "all") c = "";
+                for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+        }
+
+        function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+        }
+
+        function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+        }
+        element.className = arr1.join(" ");
+        }
+
+        var btnContainer = document.getElementById("filters");
+        var btns = btnContainer.getElementsByClassName("bttn");
+        for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+        }
+    </script>
+</body>
+</html>
